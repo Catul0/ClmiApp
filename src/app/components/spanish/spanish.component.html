@@ -1,0 +1,62 @@
+<div style="min-height: 150vh;position: relative; background: rgb(98, 87, 190);">
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">ClimApp</a>
+      <form class="d-flex" role="search">
+        <a 
+        routerLink="/home"
+        class="btn btn-outline-success" 
+    > 
+        English
+    </a>
+        <a 
+            href="https://portfoliovs.netlify.app" 
+            target="_blank"
+            class="btn btn-outline-success" 
+        > 
+            Acerca de Mi!
+        </a>
+      </form>
+    </div>
+  </nav>
+<div style='width: 100%;min-height: 140vh; position: absolute;  background: no-repeat center/100% url("{{background}}")'>
+    <div class="container p-4" style="background: none;">
+      <div class="row">
+        <div class="col-md-6" >
+          <div class="card card-body" style="background-color: rgba(255, 255, 255, .5);">
+            <form (submit)="submitLocation(cityName,countryCode)">
+              <input rype="text" class="form-control" placeholder="Nombre de la Ciudad" #cityName>   
+              <input rype="text" class="form-control mt-2" placeholder="Codigo de pais" #countryCode>
+              <a routerLink="/countryCodes">Cual es tu codigo de pais?</a>
+              <button class="btn btn-outline-success mt-2" style="width: 100%;">Obtener Clima</button>
+              <p *ngIf="validation" style="color:red">Complete los Campos!</p>
+              <p *ngIf="validation1" style="color:red">Localizacion Incorrecta!</p>
+            </form>
+          </div>
+        </div>
+        <div *ngIf="weather" class="col-md-6" >
+          <div class="card card-body" style="background-color: rgba(255, 255, 255, .5);">
+            <h5>{{weather.name}}, {{weather.sys.country}}</h5>
+            <p>Temperatura: {{weather.main.temp}} °C</p>
+            <p>Temperatura Min: {{weather.main.temp_min}} °C</p>
+            <p>Temperatura Max: {{weather.main.temp_max}} °C</p>
+            <p>Humedad: {{weather.main.humidity}} %</p>
+            <p>Presión: {{weather.main.pressure}} hPa</p>
+            <p>Nubosidad: {{weather.clouds.all}} %</p>
+            <p>Velosidad del Viento: {{wind}} km/h</p>
+            <p>Descripción: {{weather.weather[0].description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <footer style="position: absolute;width: 100%; bottom: 0; border-top: 100px;">
+    <nav class="navbar bg-black">
+      <div class="container-xxl justify-content-evenly">
+        <p style="color:aqua;">© Valentin Sigaudo 2023</p>
+          <a href="https://openweathermap.org" target="_blank"  class="btn btn-success">Fuente de datos</a>
+      </div>
+    </nav>
+  </footer>
+</div>
