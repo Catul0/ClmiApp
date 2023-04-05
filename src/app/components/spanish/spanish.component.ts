@@ -18,7 +18,7 @@ export class SpanishComponent implements OnInit {
 
   }
   ngOnInit(){
-    this.background="assets/image/fondo.png";
+    this.background="assets/image/fondo.webp";
   }
   getWeather(cityName:string, countryCode:string){
     this.validation=false;
@@ -33,11 +33,11 @@ export class SpanishComponent implements OnInit {
           this.temp=this.weather.main.temp;
           this.temp= parseInt(this.temp);
           if(this.temp>=30){
-            this.background="assets/image/desierto.png";
+            this.background="assets/image/desierto.webp";
           }else if(this.temp>10 && this.temp<30){
-            this.background="assets/image/lindo.png";
+            this.background="assets/image/lindo.webp";
           }else{
-            this.background="assets/image/nieve.png";
+            this.background="assets/image/nieve.webp";
           }
         },
         err => this.validation1=true
